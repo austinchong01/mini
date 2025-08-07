@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    
+    <% if (messages && messages.length > 0) { %>
+      <ul>
+        <% messages.forEach((message, index) => { %>
+          <li>
+            <strong><%= message.user %>:</strong> 
+            <%= message.text %>
+            <br>
+            <small><em>Added: <%= message.added.toDateString() %></em></small>
+            <br>
+            <a href="/message/<%= index %>" style="margin-top: 5px; display: inline-block;">
+              <button>Open</button>
+            </a>
+          </li>
+          <br>
+        <% }); %>
+      </ul>
+    <% } else { %>
+      <p>No messages yet!</p>
+    <% } %>
+    
+    <a href="/new">Add New Message</a>
+  </body>
+</html>
